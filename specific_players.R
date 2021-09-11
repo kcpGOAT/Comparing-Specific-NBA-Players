@@ -102,6 +102,7 @@ curry_harden_diff <- curry_harden %>%
 
 
 ## This creates a bar chart that shows the aforementioned difference, with the color of the bar being based on whether the difference is positive or negative. 
+## harden_curry_TS.png
 ggplot(data = curry_harden_diff, 
        mapping = aes(x = year_id, y = TS_diff)) +
   geom_bar(stat = "identity", mapping = aes(fill = posTS)) +
@@ -178,7 +179,7 @@ ggplot(data = best_2010_RS, mapping = aes(y = TS)) +
   theme(axis.text.x = element_blank())
 
 
-## This creates a plot of each player's TS% over their career using local polynomial regression. 
+## This creates a plot of each player's TS% over their career using local polynomial regression (2010topTSregression.png). 
 ggplot(data = best_2010_RS, mapping = aes(year_id, TS)) +
   geom_point(color = "blue") +
   geom_smooth(method = "loess", color = "red") +
@@ -191,7 +192,7 @@ ggplot(data = best_2010_RS, mapping = aes(year_id, TS)) +
   theme(axis.title.y = element_text(vjust = 2.5))
 
 
-## Same as above but with connected line instead of local polynomial regression. 
+## Same as above but with connected line instead of local polynomial regression (2010topTSline.png). 
 ggplot(data = best_2010_RS, mapping = aes(year_id, TS)) +
   geom_point(color = "blue") +
   geom_line(color = "red") +

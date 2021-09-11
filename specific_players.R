@@ -215,31 +215,3 @@ ggplot(data = best_2010_RS, mapping = aes(year_id, TS)) +
   facet_wrap(~name_common, nrow = 2) +
   theme_light() +
   theme(axis.title.y = element_text(vjust = 2.5))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

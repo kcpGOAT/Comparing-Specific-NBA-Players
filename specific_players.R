@@ -152,8 +152,7 @@ ggplot(data = new_curry_harden_diff,
        caption = "Source: fivethirtyeight")
 
 
-## This part compares the top players of 2010 draft class
-## and their performance during the regular season. 
+## This part creates a new data frame that compares the top players of 2010 draft class and their regular season performance over the years. 
 best_2010_RS <- nba_data_historical %>%
   rename(TS = "TS%") %>%
   rename(raptorO = "Raptor O") %>%
@@ -167,6 +166,8 @@ best_2010_RS <- nba_data_historical %>%
             raptorO = mean(raptorO, na.rm = TRUE), 
             raptorW = mean(raptorW, na.rm = TRUE))
 
+
+## This creates a boxplot of the TS%'s that each player has had. 
 ggplot(data = best_2010_RS, mapping = aes(y = TS)) +
   geom_boxplot(mapping = aes(fill = name_common)) +
   theme_light() +
@@ -176,6 +177,8 @@ ggplot(data = best_2010_RS, mapping = aes(y = TS)) +
        caption = "Source: fivethirtyeight") +
   theme(axis.text.x = element_blank())
 
+
+## This creates a plot of each player's TS% over their career using local polynomial regression. 
 ggplot(data = best_2010_RS, mapping = aes(year_id, TS)) +
   geom_point(color = "blue") +
   geom_smooth(method = "loess", color = "red") +
@@ -188,6 +191,7 @@ ggplot(data = best_2010_RS, mapping = aes(year_id, TS)) +
   theme(axis.title.y = element_text(vjust = 2.5))
 
 
+## Same as above but with connected line instead of local polynomial regression. 
 ggplot(data = best_2010_RS, mapping = aes(year_id, TS)) +
   geom_point(color = "blue") +
   geom_line(color = "red") +
@@ -199,6 +203,8 @@ ggplot(data = best_2010_RS, mapping = aes(year_id, TS)) +
   theme_fivethirtyeight() +
   theme(axis.title.y = element_text(vjust = 2.5))
 
+
+## Same as above but with light theme. 
 ggplot(data = best_2010_RS, mapping = aes(year_id, TS)) +
   geom_point(color = "blue") +
   geom_line(color = "red") +

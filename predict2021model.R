@@ -3,11 +3,14 @@ library(tidyverse)
 names(nba_data_historical)[15] <- "TS"
 
 model2021_TS <- function(player) {
+  # This creates a dataset that only includes regular season TS along with name and years
   player_data <- nba_data_historical %>%
     filter(type == "RS", name_common == player) %>%
     select(name_common, year_id, TS) %>%
     arrange(year_id)
+  # This creates a linear model between year and TS%
   player_regression <- lm(TS ~ year_id, data = player_data)
+  # This adds the TS% from 2020 to the slope from the regression, and then combines that result to a percentage sign. 
   paste(round(player_data$TS[player_data$year_id == 2020] 
         + unname(coef(player_regression)[2]), digits = 1), "%", sep = "")
 }

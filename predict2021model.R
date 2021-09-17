@@ -1,5 +1,4 @@
-# This program attempts to predict the TS% of a player for the 2020-2021
-# NBA season based on a linear model. 
+# This program attempts to predict the TS% of a player for the 2020-2021 NBA season based on a linear model. 
 library(tidyverse)
 
 model2021_TS <- function(player) {
